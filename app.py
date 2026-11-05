@@ -138,8 +138,8 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
         if escaners > 0:
             cuentas_por_empleado = preescaneadas // escaners
             minimo_30 = math.ceil((0.30 * D) / escaners)
-            st.write(f"- **Objetivo por empleado:** ~{cuentas_por_empleado} carritos c/u")
-            st.write(f"- **Mínimo indispensable (30%):** {minimo_30} carritos c/u")
+            st.write(f"- **Objetivo por empleado:** ~{cuentas_por_empleado} cuentas c/u")
+            st.write(f"- **Mínimo indispensable (30%):** {minimo_30} cuentas c/u")
 
     else:
         cajeros_base = min(E, MAX_CAJAS)
@@ -175,7 +175,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
         st.error("⚠️ DÉFICIT DETECTADO: La demanda supera la capacidad física. El 30% corporativo no es matemáticamente factible.")
         
         st.markdown("### Alternativas de Supervivencia")
-        tab1, tab2 = st.tabs(["Opción A (Pasillo Activo)", "Opción B (Todos a cajas)"])
+        tab1, tab2 = st.tabs(["Opción A", "Opción B"])
         
         with tab1:
             if total_A > 0:
