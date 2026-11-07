@@ -69,10 +69,10 @@ else:
 # --- INTERFAZ: CAPTURA DE PARÁMETROS ---
 col1, col2 = st.columns(2)
 with col1:
-    hora_bloque = st.selectbox("Hora de cierre del bloque:", lista_horas, index=indice_defecto)
+    hora_bloque = st.selectbox("Bloque horario:", lista_horas, index=indice_defecto)
     D_puerta = st.number_input("Clientes reportados en puerta:", min_value=0, step=1, value=None, placeholder="Ej. 150")
 with col2:
-    E = st.number_input("Empleados disponibles en piso:", min_value=0, step=1, value=None, placeholder="Ej. 10")
+    E = st.number_input("Empleados disponibles:", min_value=0, step=1, value=None, placeholder="Ej. 10")
 
 # --- BOTÓN DE EJECUCIÓN ---
 if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
@@ -127,7 +127,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
         with c1:
             st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{cajeros}</div><div class='etiqueta-gigante'>Cajas</div></div>", unsafe_allow_html=True)
         with c2:
-            st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{escaners}</div><div class='etiqueta-gigante'>Escáneres</div></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{pre-escaners}</div><div class='etiqueta-gigante'>Escáneres</div></div>", unsafe_allow_html=True)
         with c3:
             st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{sobrantes}</div><div class='etiqueta-gigante'>Libres</div></div>", unsafe_allow_html=True)
         
