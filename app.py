@@ -127,7 +127,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
         with c1:
             st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{cajeros}</div><div class='etiqueta-gigante'>Cajas</div></div>", unsafe_allow_html=True)
         with c2:
-            st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{pre_ecaners}</div><div class='etiqueta-gigante'>Escáneres</div></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{escaners}</div><div class='etiqueta-gigante'>Escáneres</div></div>", unsafe_allow_html=True)
         with c3:
             st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{sobrantes}</div><div class='etiqueta-gigante'>Libres</div></div>", unsafe_allow_html=True)
         
