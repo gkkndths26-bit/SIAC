@@ -183,7 +183,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
                 with c1:
                     st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{cajeros_A}</div><div class='etiqueta-gigante'>Cajas</div></div>", unsafe_allow_html=True)
                 with c2:
-                    st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{escaners_A}</div><div class='etiqueta-gigante'>Escáneres</div></div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{escaners_A}</div><div class='etiqueta-gigante'>Pre-escáners</div></div>", unsafe_allow_html=True)
                 st.write("")
                 st.write(f"- **Resultado:** Se procesarán {total_A} de {D} tickets.")
             else:
