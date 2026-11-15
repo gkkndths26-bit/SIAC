@@ -100,7 +100,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
     modelo += P, "Maximizar_Cuentas_Preescaneadas"
 
     modelo += 60 * T + 45 * P <= 1440 * X1, "Tope_Tiempo_Cajas"
-    modelo += 25 * P <= 1440 * X2, "Tope_Tiempo_Pasillo"
+    modelo += 35 * P <= 1440 * X2, "Tope_Tiempo_Pasillo"
     modelo += T + P == D, "Absorcion_Total_Demanda"
     modelo += P >= 0.30 * D, "Meta_Corporativa"
     modelo += X1 + X2 <= E, "Limite_Empleados"
@@ -154,7 +154,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
             cajeros_A = cajeros_base
 
         if cajeros_A >= 3:
-            pre_A_potencial = escaners_A * 57
+            pre_A_potencial = escaners_A * 41
             tiempo_cajas_A = cajeros_A * 1440
             max_pre_cajas = int(tiempo_cajas_A / 45)
             techo_realista = int(0.50 * D)
