@@ -58,14 +58,15 @@ st.markdown("<h1 style='text-align: center; font-size: 7rem !important; color: #
 st.markdown("<h2 class='subtitulo-centrado'>Sistema Inteligente de Asignación de Cajas</h2>", unsafe_allow_html=True)
 st.markdown("---")
 
-# --- LÓGICA DE RELOJ DEL SISTEMA (AJUSTADO A ZONA HORARIA LOCAL) ---
 zona_local = pytz.timezone('America/Mexico_City')
 ahora = datetime.now(zona_local)
 minuto_actual = ahora.minute
 hora_actual = ahora.hour
 
-# Redondear al próximo bloque de 30 minutos
-if minuto_actual < 30:
+if minuto_actual < 20:
+    minuto_objetivo = "00"
+    hora_objetivo = hora_actual
+elif 20 <= minuto_actual < 50:
     minuto_objetivo = "30"
     hora_objetivo = hora_actual
 else:
@@ -81,16 +82,7 @@ lista_horas = list(factores_conversion.keys())
 if hora_formateada in lista_horas:
     indice_defecto = lista_horas.index(hora_formateada)
 else:
-    indice_defecto = 0 # Si abren el sistema de madrugada, selecciona el primer bloque por defecto
-
-# --- INTERFAZ: CAPTURA DE PARÁMETROS ---
-col1, col2 = st.columns(2)
-with col1:
-    hora_bloque = st.selectbox("Bloque horario:", lista_horas, index=indice_defecto)
-    D_puerta = st.number_input("Clientes reportados en puerta:", min_value=0, step=1, value=None, placeholder="Ej. 150")
-with col2:
-    E = st.number_input("Empleados disponibles:", min_value=0, step=1, value=None, placeholder="Ej. 10")
-
+    indice_defecto = 0
 # --- BOTÓN DE EJECUCIÓN ---
 if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
     
