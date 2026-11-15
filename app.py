@@ -188,6 +188,7 @@ if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
                     st.markdown(f"<div class='tarjeta-azul'><div class='numero-gigante'>{escaners_A}</div><div class='etiqueta-gigante'>Pre-escáners</div></div>", unsafe_allow_html=True)
                 st.write("")
                 st.write(f"- **Resultado:** Se procesarán {total_A} de {D} tickets.")
+                st.write(f"- **Pre-escaneo proyectado:** {porcentaje_A:.1f}%")
             else:
                 st.write("Descartada por seguridad de fila.")
                 
