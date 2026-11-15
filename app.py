@@ -68,7 +68,7 @@ if hora_formateada in lista_horas:
 else:
     indice_defecto = 0 
 
-# --- ¡BLOQUE RESTAURADO! INTERFAZ: CAPTURA DE PARÁMETROS ---
+# --- INTERFAZ: CAPTURA DE PARÁMETROS ---
 col1, col2 = st.columns(2)
 with col1:
     hora_bloque = st.selectbox("Hora de cierre del bloque:", lista_horas, index=indice_defecto)
