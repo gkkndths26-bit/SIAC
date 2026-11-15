@@ -9,31 +9,14 @@ import pytz
 MAX_CAJAS = 16
 MAX_PRE_ESCANERES = 7
 
+# Diccionario actualizado con análisis p80
 factores_conversion = {
-    "10:00": 1.06,
-    "10:30": 1.06,
-    "11:00": 1.5,
-    "11:30": 1.5,
-    "12:00": 1.58,
-    "12:30": 1.58,
-    "13:00": 1.75,
-    "13:30": 1.75,
-    "14:00": 2.0,
-    "14:30": 2.0,
-    "15:00": 2.11,
-    "15:30": 2.11,
-    "16:00": 2.2,
-    "16:30": 2.2,
-    "17:00": 1.93,
-    "17:30": 1.93,
-    "18:00": 1.97,
-    "18:30": 1.97,
-    "19:00": 1.92,
-    "19:30": 1.92,
-    "20:00": 2.1,
-    "20:30": 2.1,
-    "21:00": 1.0,
-    "21:30": 1.0,
+    "10:00": 1.06, "10:30": 1.06, "11:00": 1.5,  "11:30": 1.5,
+    "12:00": 1.58, "12:30": 1.58, "13:00": 1.75, "13:30": 1.75,
+    "14:00": 2.0,  "14:30": 2.0,  "15:00": 2.11, "15:30": 2.11,
+    "16:00": 2.2,  "16:30": 2.2,  "17:00": 1.93, "17:30": 1.93,
+    "18:00": 1.97, "18:30": 1.97, "19:00": 1.92, "19:30": 1.92,
+    "20:00": 2.1,  "20:30": 2.1,  "21:00": 1.0,  "21:30": 1.0,
 }
 
 # --- CONFIGURACIÓN DE PÁGINA Y CSS PERSONALIZADO ---
@@ -58,6 +41,7 @@ st.markdown("<h1 style='text-align: center; font-size: 7rem !important; color: #
 st.markdown("<h2 class='subtitulo-centrado'>Sistema Inteligente de Asignación de Cajas</h2>", unsafe_allow_html=True)
 st.markdown("---")
 
+# --- LÓGICA DE RELOJ DEL SISTEMA CON COLCHÓN DE 10 MINUTOS ---
 zona_local = pytz.timezone('America/Mexico_City')
 ahora = datetime.now(zona_local)
 minuto_actual = ahora.minute
@@ -82,7 +66,16 @@ lista_horas = list(factores_conversion.keys())
 if hora_formateada in lista_horas:
     indice_defecto = lista_horas.index(hora_formateada)
 else:
-    indice_defecto = 0
+    indice_defecto = 0 
+
+# --- ¡BLOQUE RESTAURADO! INTERFAZ: CAPTURA DE PARÁMETROS ---
+col1, col2 = st.columns(2)
+with col1:
+    hora_bloque = st.selectbox("Hora de cierre del bloque:", lista_horas, index=indice_defecto)
+    D_puerta = st.number_input("Clientes reportados en puerta:", min_value=0, step=1, value=None, placeholder="Ej. 150")
+with col2:
+    E = st.number_input("Empleados disponibles en piso:", min_value=0, step=1, value=None, placeholder="Ej. 10")
+
 # --- BOTÓN DE EJECUCIÓN ---
 if st.button("CALCULAR ASIGNACIÓN", type="primary", use_container_width=True):
     
